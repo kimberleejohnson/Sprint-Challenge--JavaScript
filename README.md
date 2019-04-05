@@ -76,13 +76,12 @@ Edit this document to include your answers after each question. Make sure to lea
         this.treeType = treeType;
         this.welcome = function() {
             console.log(this.greeting + this.treeType);
-            console.log(this); // Points to my HappyTree Object instance that HappyTree creates (oak for oak; willow for willow)
+            console.log(this); // Points to my HappyTree Object instance that "const variable name = new HappyTree" would create 
         };
     }  
    
 // 4 - Explicit binding: 
-    Applies to functions! A few specific methods, .apply, .bind, and .call tell `this` to 
-    look in so specific a place for context it can even override previous context.  
+    Applies to functions! A few specific methods, .apply, .bind, and .call tell `this` to look to a specific place for context, and this can even override previous context.  
     function HappyTree(treeType) {
         this.greeting = 'Hello, welcome to the forest, I am a ';
         this.treeType = treeType;
