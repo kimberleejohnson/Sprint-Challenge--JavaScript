@@ -28,15 +28,79 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager
 
-1. Describe the biggest difference between `.forEach` & `.map`.
+1. Describe the biggest difference between .forEach & .map.
+
+// The biggest difference between .forEach and .map is that return is implicit with .foreach, but .map demands the developer write return in order to see the new array that has been stored. More on .foreach and .map below! 
+
+// .forEach and .map are both array methods that help developers perform an action on a data set, BUT they have some key difference. .forEach will go through an array item by item and perform an action, for example, you could use .foreach to console log every item in an array one by one. One feature that developers need to look out for is that .forEach *must* iterate through every item without stopping. .map on the other hand creates a new array without manipulating the original array, for example, you could call .map to create a new array but with every string item in the array converted to all lower case. 
 
 2. What is the difference between a function and a method?
 
+// This is a trick question, because methods are functions! Nice try, Lambda School. THAT SAID, methods are specifically functions that are attached to objects, whereas functions themselves can exist outside an object. It's sort of like that saying, "Every square is a rectangle, but not every rectangle is a square." 
+
 3. What is closure?
+
+// Closure is the invisible glue that allows values to pass between Parent and Child objects in Javascript via references. It's a combination of a function, and the lexical environment within which that function was declared. 
 
 4. Describe the four rules of the 'this' keyword.
 
+// 1 - Window binding: 
+    To start, is something we should never do! When in the global scope, the value of `this` will point to the window or console object. 
+    In our use cases, this can be our entire browser. 
+    
+    // Window binding example 
+    function forest(tree) {
+        console.log(this); // Logs my window, a whole bunch of Javascript, to the console. 
+        return tree;
+        }
+    
+// 2 - Implicit binding: 
+    Applies to objects! If we're using a method on an object, `this` is bound to whatever context is left of the dot. 
+    
+    // Implicit binding example 
+    const forest = {
+        greeting: 'Hello',
+        sayTree: function(name) {
+        console.log(`${this.greeting} I am an ${name} tree!`);
+        console.log(this); // Logs my greeting and the function to the console, because we're using an object 
+        and `this` points to the left of the dot. 
+        }
+    };
+
+// 3 - New binding: 
+    New binding uses constructor functions, which means that `this` refers to the specific instance of an object that is created and returned by the construction.
+    
+    // New binding example 
+    function HappyTree(treeType) {
+        this.greeting = 'Hello, welcome to the forest, I am a ';
+        this.treeType = treeType;
+        this.welcome = function() {
+            console.log(this.greeting + this.treeType);
+            console.log(this); // Points to my HappyTree Object instance that HappyTree creates (oak for oak; willow for willow)
+        };
+    }  
+   
+// 4 - Explicit binding: 
+    Applies to functions! A few specific methods, .apply, .bind, and .call tell `this` to 
+    look in so specific a place for context it can even override previous context.  
+    function HappyTree(treeType) {
+        this.greeting = 'Hello, welcome to the forest, I am a ';
+        this.treeType = treeType;
+        this.welcome = function() {
+            console.log(this.greeting + this.treeType);
+            console.log(this); // Points to my HappyTree Object instance that HappyTree creates (oak for oak; willow for willow)
+        };
+    }
+    const oak = new HappyTree('oak');
+    const willow = new HappyTree('willow');
+    // Using .call to overwwrite the previous values, like in a spooky forest 
+    console.log(oak.welcome.call(willow)); 
+    console.log(willow.welcome.call(oak)); 
+*
+
 5. Why do we need super() in an extended class?
+
+// We use super() in extended classes so we can use the same attributes and methods of the extended Class. 
 
 ## Project Set up
 
